@@ -4,19 +4,19 @@ using WiredBrainCoffee.StorageApp.Entities;
 
 namespace WiredBrainCoffee.StorageApp.Repository
 {
-    public class EmployeeRepository
+    public class GenericRepository<T>
     {
-        private readonly List<Employee> _employees = new List<Employee>();
-        public void Add(Employee employee)
+        private readonly List<T> _items = new();
+        public void Add(T item)
         {
-            _employees.Add(employee);
+            _items.Add(item);
         }
 
         public void Save()
         {
-            foreach (var employee in _employees)
+            foreach (var item in _items)
             {
-                Console.WriteLine(employee);
+                Console.WriteLine(item);
             }
         }
     }
