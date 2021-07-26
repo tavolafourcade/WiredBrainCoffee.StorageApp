@@ -4,9 +4,9 @@ using WiredBrainCoffee.StorageApp.Entities;
 
 namespace WiredBrainCoffee.StorageApp.Repository
 {
-    public class EmployeeRepository<T>
+    public class GenericRepository<T>
     {
-        private readonly List<T> _items = new();
+        protected readonly List<T> _items = new(); // With protected you can access it from a SubClass
         public void Add(T item)
         {
             _items.Add(item);
@@ -18,6 +18,17 @@ namespace WiredBrainCoffee.StorageApp.Repository
             {
                 Console.WriteLine(item);
             }
+        }
+    }
+
+    /*
+     * Creating a SubClass
+     */
+    public class GenericRepositoryWithRemove<T> : GenericRepository<T> // We're inheriting from Employee Class
+    {
+        public void Remove(T item)
+        {
+            _items.Remove(item);
         }
     }
 }
