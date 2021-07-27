@@ -6,7 +6,8 @@ namespace WiredBrainCoffee.StorageApp.Repository
 {
     public class GenericRepository<T>
     {
-        protected readonly List<T> _items = new(); // With protected you can access it from a SubClass
+
+        private readonly List<T> _items = new(); // With protected you can access it from a SubClass, but with private we can't
         public void Add(T item)
         {
             _items.Add(item);
@@ -19,16 +20,23 @@ namespace WiredBrainCoffee.StorageApp.Repository
                 Console.WriteLine(item);
             }
         }
+
+        public void Remove(T item)
+        {
+            _items.Remove(item);
+        }
     }
 
     /*
      * Creating a SubClass
      */
-    public class GenericRepositoryWithRemove<T> : GenericRepository<T> // We're inheriting from Employee Class
+    /*
+    public class GenericRepositoryWithRemove<T, TKey> : GenericRepository<T, TKey> // We're inheriting from Employee Class
     {
         public void Remove(T item)
         {
             _items.Remove(item);
         }
     }
+    */
 }
